@@ -1,24 +1,31 @@
 #include <iostream>
 #include <vector>
-int main() {
 
+int main() {
     std::vector<int> vec;
-    int count = 0;
-    int input;
-    std::cin >> input;
-    while (input != -1) {
-        count++;
-        if (count > 20) {
-            vec.erase(vec.begin());
-            vec.push_back(input);
-        } else {
-            vec.push_back(input);
+    int n;
+
+    do {
+        std::cout << "Введите число: ";
+        std::cin >> n;
+        if (n != -1){
+            if (vec.size() == 20) {
+                for (int i = 0; i < vec.size(); ++i) {
+                    if (i < vec.size() - 1)  {
+                        vec[i] = vec[i + 1];
+                    } else {
+                        vec[i] = n;
+                    }
+                }
+            } else {
+                vec.push_back(n);
+            }
         }
-        std::cin >> input;
-    }
+    } while (n != -1);
 
     for (int i : vec) {
         std::cout << i << " ";
     }
 
+    return 0;
 }
